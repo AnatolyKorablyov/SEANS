@@ -10,5 +10,6 @@ CStateMoora::CStateMoora(const std::string & name, const std::string & output)
 
 void CStateMoora::SetPath(std::string toName, std::string out)
 {
+	//inp toName
 	to.emplace(toName, out);
 }

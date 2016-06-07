@@ -6,8 +6,12 @@
 #include <functional>
 #include <vector>
 
-#include "MooraStatesment.h"
 #include "MelleeStatesment.h"
+#include "MooraStatesment.h"
+
+#include "TransferMoorToMellee.h"
+#include "TransferMelleToMoora.h"
+
 
 using json = nlohmann::json;
 
@@ -20,10 +24,14 @@ public:
 private:
 	void ParseData(const std::string & fileName);
 	void ParseCommand(const std::string & fileName);
-	void TranslateMilToMur(std::vector<std::string> & args);
-	void TranslateMurToMil(std::vector<std::string> & args);
+	void TranslateMilToMur(const std::string & args);
+	void TranslateMurToMil(const std::string & args);
 
-	std::map < std::string, std::function<void(std::vector<std::string> & args)> > m_commands;
+	void Save();
+
+	std::string m_outputFile;
+
+	std::map < std::string, std::function<void(std::string & args)> > m_commands;
 	CMooraStatesment m_moora;
 	CMelleeStatesment m_meale;
 	std::map < std::string, CMelleeStatesment> m_melleeMachines;
