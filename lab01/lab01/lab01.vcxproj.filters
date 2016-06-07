@@ -39,8 +39,16 @@
     <ClCompile Include="StateMoora.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Parser.cpp">
       <Filter>Source Files\parser</Filter>
+=======
+    <ClCompile Include="TransferMelleToMoora.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferMoorToMellee.cpp">
+      <Filter>Source Files</Filter>
+>>>>>>> 412cb28ee96a5d588289fd0ff427d1a0881a4860
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,11 +67,19 @@
     <ClInclude Include="StateMelee.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="json.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Parser.h">
       <Filter>Source Files\parser</Filter>
+=======
+    <ClInclude Include="TransferMelleToMoora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferMoorToMellee.h">
+      <Filter>Header Files</Filter>
+>>>>>>> 412cb28ee96a5d588289fd0ff427d1a0881a4860
     </ClInclude>
   </ItemGroup>
 </Project>

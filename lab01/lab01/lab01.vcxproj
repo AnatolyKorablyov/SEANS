@@ -120,6 +120,8 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="StateMelee.cpp" />
     <ClCompile Include="StateMoora.cpp" />
+    <ClCompile Include="TransferMelleToMoora.cpp" />
+    <ClCompile Include="TransferMoorToMellee.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="json.hpp" />
@@ -129,6 +131,8 @@
     <ClInclude Include="StateMelee.h" />
     <ClInclude Include="StateMoora.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TransferMelleToMoora.h" />
+    <ClInclude Include="TransferMoorToMellee.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

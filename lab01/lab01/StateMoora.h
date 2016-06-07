@@ -10,4 +10,3 @@ public:
 	CStateMoora(const std::string & name, const std::string & output);
 	void SetPath(std::string inp, std::string toName);
 };
-
