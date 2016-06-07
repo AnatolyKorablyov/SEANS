@@ -1,22 +1,27 @@
 #include <iostream>
 #include "MelleeStatesment.h"
 #include "MooraStatesment.h"
+#include "TransferMelleToMoora.h"
 
 int main()
 {
-	CStateMelee nodeQ1("q1");
-	nodeQ1.SetPath("x1", "q1", "y1");
-
+	CStateMelee nodeQ1("q0");
+	nodeQ1.SetPath("x1", "q2", "y1");
+	nodeQ1.SetPath("x2", "q0", "y1");
 
 	CMelleeStatesment dataStates;
 	dataStates.addState(nodeQ1);
 
-	nodeQ1.SetPath("x2", "q2", "y2");
-	dataStates.addState(nodeQ1);
-
-	CStateMelee nodeQ2("q2");
-	nodeQ2.SetPath("x1", "q3", "y1");
+	CStateMelee nodeQ2("q1");
+	nodeQ2.SetPath("x1", "q0", "y1");
+	nodeQ2.SetPath("x2", "q2", "y2");
 	dataStates.addState(nodeQ2);
+
+
+	CStateMelee nodeQ3("q2");
+	nodeQ3.SetPath("x1", "q0", "y2");
+	nodeQ3.SetPath("x2", "q1", "y1");
+	dataStates.addState(nodeQ3);
 
 	std::cout << "MELLEEE :" << std::endl;
 	for (auto &it : dataStates.m_stateData)
@@ -30,6 +35,20 @@ int main()
 		std::cout << '\n' << std::endl;
 	}
 
+	std::cout << "Transfer " << std::endl;
+	CTransferMelleToMoora melToMor(dataStates);
+
+	for (auto &it : melToMor.m_resultMoora.m_stateData)
+	{
+		auto state = it.second;
+		std::cout << "name " << state->m_name << "  output " << state->m_output << std::endl;
+		for (auto &kj : state->to)
+		{
+			std::cout << '\t' << kj.first << "->" << kj.second << std::endl;
+		}
+		std::cout << '\n' << std::endl;
+	}
+	/*
 	CStateMoora nodeQ1Mor("q1", "y1");
 	nodeQ1Mor.SetPath("x1", "q1");
 
@@ -58,7 +77,7 @@ int main()
 		}
 		std::cout << '\n' << std::endl;
 	}
-
+*/
 	/*
 	CState nodeq1("q1");
 	nodeq1.SetPath("q1", "x1");

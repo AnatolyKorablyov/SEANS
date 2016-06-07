@@ -115,6 +115,7 @@
     <ClCompile Include="MooraStatesment.cpp" />
     <ClCompile Include="StateMelee.cpp" />
     <ClCompile Include="StateMoora.cpp" />
+    <ClCompile Include="TransferMelleToMoora.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MelleeStatesment.h" />
@@ -122,6 +123,7 @@
     <ClInclude Include="StateMelee.h" />
     <ClInclude Include="StateMoora.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TransferMelleToMoora.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
