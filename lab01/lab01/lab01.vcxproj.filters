@@ -39,6 +39,9 @@
     <ClCompile Include="TransferMelleToMoora.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TransferMoorToMellee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files\State</Filter>
     </ClInclude>
     <ClInclude Include="TransferMelleToMoora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferMoorToMellee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

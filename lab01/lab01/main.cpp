@@ -2,6 +2,7 @@
 #include "MelleeStatesment.h"
 #include "MooraStatesment.h"
 #include "TransferMelleToMoora.h"
+#include "TransferMoorToMellee.h"
 
 int main()
 {
@@ -48,23 +49,37 @@ int main()
 		}
 		std::cout << '\n' << std::endl;
 	}
-	/*
+
+
+
+
 	CStateMoora nodeQ1Mor("q1", "y1");
-	nodeQ1Mor.SetPath("x1", "q1");
-
-
+	nodeQ1Mor.SetPath("x1", "q2");
+	nodeQ1Mor.SetPath("x2", "q3");
 	CMooraStatesment dataStatesMor;
 	dataStatesMor.addState(nodeQ1Mor);
 
-	nodeQ1Mor.SetPath("x2", "q2");
-	dataStatesMor.addState(nodeQ1Mor);
 
-	CStateMoora nodeQ2Mor("q2", "y3");
-	nodeQ2Mor.SetPath("x1", "q3");
+	CStateMoora nodeQ2Mor("q2", "y1");
+	nodeQ2Mor.SetPath("x1", "q2");
+	nodeQ2Mor.SetPath("x2", "q4");
 	dataStatesMor.addState(nodeQ2Mor);
 
+
 	CStateMoora nodeQ3Mor("q3", "y2");
+	nodeQ3Mor.SetPath("x1", "q1");
+	nodeQ3Mor.SetPath("x2", "q2");
 	dataStatesMor.addState(nodeQ3Mor);
+
+	CStateMoora nodeQ4Mor("q4", "y1");
+	nodeQ4Mor.SetPath("x1", "q2");
+	nodeQ4Mor.SetPath("x2", "q5");
+	dataStatesMor.addState(nodeQ4Mor);
+
+	CStateMoora nodeQ5Mor("q5", "y2");
+	nodeQ5Mor.SetPath("x1", "q4");
+	nodeQ5Mor.SetPath("x2", "q2");
+	dataStatesMor.addState(nodeQ5Mor);
 
 	std::cout << "MOORA :" << std::endl;
 	for (auto &it : dataStatesMor.m_stateData)
@@ -77,7 +92,20 @@ int main()
 		}
 		std::cout << '\n' << std::endl;
 	}
-*/
+	std::cout << "Transfer " << std::endl;
+	CTransferMoorToMellee MorToMel(dataStatesMor);
+	for (auto &it : MorToMel.m_resultMellee.m_stateData)
+	{
+		auto state = it.second;
+		std::cout << "name " << state->m_name << std::endl;
+		for (auto &kj : state->to)
+		{
+			std::cout << '\t' << kj.first << "->" << kj.second.first << "/" << kj.second.second << std::endl;
+		}
+		std::cout << '\n' << std::endl;
+	}
+
+
 	/*
 	CState nodeq1("q1");
 	nodeq1.SetPath("q1", "x1");
