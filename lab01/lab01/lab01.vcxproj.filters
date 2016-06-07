@@ -19,6 +19,9 @@
     <Filter Include="Source Files\State">
       <UniqueIdentifier>{f4d05fa1-8d15-4350-89c6-1620129d621f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\parser">
+      <UniqueIdentifier>{dbab1a45-e449-494b-abf0-016433ebc871}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="StateMoora.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files\parser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -52,6 +58,12 @@
     </ClInclude>
     <ClInclude Include="StateMelee.h">
       <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Source Files\parser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

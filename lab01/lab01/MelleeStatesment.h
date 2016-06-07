@@ -7,8 +7,10 @@ public:
 	CMelleeStatesment();
 	~CMelleeStatesment();
 
-	bool addState(CStateMelee & stateNode);
+	std::shared_ptr<CStateMelee> addState(const CStateMelee & stateNode);
 
-	std::map<std::string, CStateMelee*> m_stateData;
+	std::map<std::string, std::shared_ptr<CStateMelee>> m_stateData;
+	std::string id;
+
+	std::shared_ptr<CStateMelee> operator[](const std::string & id);
 };
-

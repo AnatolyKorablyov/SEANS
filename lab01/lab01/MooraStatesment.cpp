@@ -11,7 +11,7 @@ CMooraStatesment::~CMooraStatesment()
 {
 }
 
-bool CMooraStatesment::addState(CStateMoora & stateNode)
+bool CMooraStatesment::addState(const CStateMoora & stateNode)
 {
 	std::string nameNode = stateNode.m_name;
 	if (m_stateData.find(nameNode) != m_stateData.end())
@@ -23,7 +23,13 @@ bool CMooraStatesment::addState(CStateMoora & stateNode)
 	}
 	else
 	{
-		m_stateData.emplace(nameNode, &stateNode);
+		m_stateData.emplace(nameNode, std::make_shared<CStateMoora>(stateNode));
 	}
 	return false;
+}
+
+
+std::shared_ptr<CStateMoora> CMooraStatesment::operator[](const std::string & id)
+{
+	return m_stateData.at(id);
 }

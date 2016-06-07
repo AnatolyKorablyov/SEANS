@@ -1,0 +1,10 @@
+{
+	"commands": [{
+		"type": "translate-mil-to-mur",
+		"arguments": ["state machine x"]
+	}, {
+		"type": "translate-mur-to-mil",
+		"arguments": ["state machine x", "state machine y"]
+	}]
+
+}

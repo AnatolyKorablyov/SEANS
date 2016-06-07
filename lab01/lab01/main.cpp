@@ -1,9 +1,28 @@
 #include <iostream>
 #include "MelleeStatesment.h"
 #include "MooraStatesment.h"
+#include "Parser.h"
 
-int main()
+int main(int argc, char* argv[])
 {
+#if 1
+	if (argc != 4)
+	{
+		std::invalid_argument("use: <name program> <path to command file> <path to input file> <path to output file>");
+	}
+	//<название ррограммы> <путь до файл команд> <путь до файла ввода> <путь до файла вывода>
+	std::string commandFileName;
+	std::string inputFileName;
+	std::string outputFileName;
+	std::cout << "<path to command file> <path to input file> <path to output file>" << std::endl;
+	//std::cin >> commandFileName >> inputFileName >> outputFileName;
+	commandFileName = argv[1];
+	inputFileName = argv[2];
+	outputFileName = argv[3];
+	CParser(commandFileName, inputFileName, outputFileName);
+	system("pause");
+#endif
+	
 	CStateMelee nodeQ1("q1");
 	nodeQ1.SetPath("x1", "q1", "y1");
 

@@ -82,6 +82,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -113,12 +117,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MelleeStatesment.cpp" />
     <ClCompile Include="MooraStatesment.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="StateMelee.cpp" />
     <ClCompile Include="StateMoora.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="MelleeStatesment.h" />
     <ClInclude Include="MooraStatesment.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="StateMelee.h" />
     <ClInclude Include="StateMoora.h" />
     <ClInclude Include="stdafx.h" />
