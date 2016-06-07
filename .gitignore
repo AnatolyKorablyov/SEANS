@@ -72,7 +72,7 @@ artifacts/
 *.svclog
 *.scc
 *.lastbuildstate
-
+*.db
 # Chutzpah Test files
 _Chutzpah*
 
