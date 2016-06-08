@@ -3,7 +3,6 @@
 
 CMinimizate::CMinimizate(std::map<std::string, CStateMelee*> &originalMachine)
 	: m_originalMachine(originalMachine)
-	, m_minimizateMachineCopy(originalMachine)
 {
 	m_check.resize(m_originalMachine.size());
 }
@@ -94,7 +93,6 @@ void CMinimizate::SearchEquivalence1(std::string state, std::string name, std::v
 
 std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 {
-	std::map<std::string, CStateMelee*> minimizateMachine;
 	std::string state;
 	for(auto &iter : m_originalMachine)
 	{
@@ -110,9 +108,7 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 		}
 		state = "";
 	}
-	/////////////////////////////////////////////
 	FillTheCell();
-	////////////////////////////////////////////
 	for (auto &classes : m_parts)
 	{
 		for (auto &states : classes.word)
@@ -128,7 +124,6 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 			state = "";
 		}
 	}
-	//////////////////////////////////
 	while(m_parts.size() != m_partsCopy.size())
 	{
 		FillTheCell();
@@ -149,52 +144,29 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 			}
 		}
 	}
-//	///
-//	FillTheCell();
-//	m_partsCopy.clear();
-//	for (auto &classes : m_parts)
-//	{
-//		for (auto &states : classes.word)
-//		{
-//			for (auto &ite : states.second)
-//			{
-//				state += ite.second;
-//			}
-//			if (!m_wasFalse)
-//			{
-//				SearchEquivalence1(state, states.first, states.second);
-//			}
-//			state = "";
-//		}
-//	}
-//	FillTheCell();
-//////////////////////////////////
-//	FillTheCell();
-//	m_partsCopy.clear();
-//	for (auto &classes : m_parts)
-//	{
-//		for (auto &states : classes.word)
-//		{
-//			for (auto &ite : states.second)
-//			{
-//				state += ite.second;
-//			}
-//			if (!m_wasFalse)
-//			{
-//				SearchEquivalence1(state, states.first, states.second);
-//			}
-//			state = "";
-//		}
-//	}
-//	FillTheCell();
-//
-	//////////////////////////////////
-	return minimizateMachine;
+	return ConvertedIntoStandardView();
 }
 
-void CMinimizate::GoToInitialPachine()
+std::map<std::string, CStateMelee*> CMinimizate::ConvertedIntoStandardView()
 {
-
+	CMelleeStatesment minimizateMachine;
+	
+	for(auto &classes : m_parts)
+	{
+		auto firstState = classes.word.begin();
+		CStateMelee node(firstState->first);
+		auto x = m_originalMachine.at(firstState->first);
+		for (auto &iter : x->to)
+		{
+			node.SetPath(iter.first, iter.second.first, iter.second.second);
+		}
+		m_nodes.push_back(node);
+	}
+	for(auto &it : m_nodes)
+	{
+		minimizateMachine.addState(it);
+	}
+	return minimizateMachine.m_stateData;
 }
 
 void CMinimizate::FillTheCell()

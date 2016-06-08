@@ -21,13 +21,13 @@ private:
 	std::vector<MyStruct> m_parts;
 	std::vector<MyStruct> m_partsCopy;
 	std::map<std::string, CStateMelee*> m_originalMachine;
-	std::map<std::string, CStateMelee*> m_minimizateMachineCopy;
 	std::vector<std::vector<std::pair<std::string, std::string>>> m_word;
 	bool m_wasFalse = false;
 	void SearchEquivalence1(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);
 	void SeachEqual(std::string qOriginal, int count, std::string q);
 	void FillTheCell();
-	void GoToInitialPachine();
+	std::map<std::string, CStateMelee*> ConvertedIntoStandardView();
+	std::vector<CStateMelee> m_nodes;
 };
 
 
