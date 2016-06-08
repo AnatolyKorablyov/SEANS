@@ -123,6 +123,7 @@
     <ClCompile Include="EquivalenceСhecking.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MelleeStatesment.cpp" />
+    <ClCompile Include="Minimizate.cpp" />
     <ClCompile Include="MooraStatesment.cpp" />
     <ClCompile Include="NotDeterStatesment.cpp" />
     <ClCompile Include="Parser.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="EquivalenceСhecking.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="MelleeStatesment.h" />
+    <ClInclude Include="Minimizate.h" />
     <ClInclude Include="MooraStatesment.h" />
     <ClInclude Include="NotDeterStatesment.h" />
     <ClInclude Include="Parser.h" />

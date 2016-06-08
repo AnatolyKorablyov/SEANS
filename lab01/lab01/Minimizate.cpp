@@ -91,7 +91,7 @@ void CMinimizate::SearchEquivalence1(std::string state, std::string name, std::v
 }
 
 
-std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
+std::map<std::string, std::shared_ptr<CStateMelee>> CMinimizate::GetMinimizateMachine()
 {
 	std::string state;
 	for(auto &iter : m_originalMachine)
@@ -147,7 +147,7 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 	return ConvertedIntoStandardView();
 }
 
-std::map<std::string, CStateMelee*> CMinimizate::ConvertedIntoStandardView()
+std::map<std::string, std::shared_ptr<CStateMelee>> CMinimizate::ConvertedIntoStandardView()
 {
 	CMelleeStatesment minimizateMachine;
 	

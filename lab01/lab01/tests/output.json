@@ -28,36 +28,6 @@
                 }
             ],
             "type": "meale"
-        },
-        {
-            "id": "StateMachineX",
-            "states": [
-                [
-                    "b0",
-                    "y1"
-                ],
-                [
-                    "b1",
-                    "y1"
-                ],
-                [
-                    "b2",
-                    "y2"
-                ]
-            ],
-            "transitions": [
-                {
-                    "from": "b0",
-                    "input": "x2",
-                    "to": "b1"
-                },
-                {
-                    "from": "b1",
-                    "input": "x1",
-                    "to": "b2"
-                }
-            ],
-            "type": "moore"
         }
     ]
 }

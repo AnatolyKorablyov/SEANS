@@ -14,7 +14,7 @@ class CMinimizate
 public:
 	CMinimizate(std::map<std::string, CStateMelee*> &originalMachine);
 	~CMinimizate();
-	std::map<std::string, CStateMelee*> GetMinimizateMachine();
+	std::map<std::string, std::shared_ptr<CStateMelee>> GetMinimizateMachine();
 	std::vector<bool> m_check;
 private:
 	void SearchEquivalence(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);
@@ -26,7 +26,7 @@ private:
 	void SearchEquivalence1(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);
 	void SeachEqual(std::string qOriginal, int count, std::string q);
 	void FillTheCell();
-	std::map<std::string, CStateMelee*> ConvertedIntoStandardView();
+	std::map<std::string, std::shared_ptr<CStateMelee>> ConvertedIntoStandardView();
 	std::vector<CStateMelee> m_nodes;
 };
 

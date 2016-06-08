@@ -15,6 +15,7 @@
     <ClCompile Include="NotDeterStatesment.cpp" />
     <ClCompile Include="StateDeterm.cpp" />
     <ClCompile Include="StateNotDeterm.cpp" />
+    <ClCompile Include="Minimizate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="json.hpp" />
@@ -32,5 +33,6 @@
     <ClInclude Include="NotDeterStatesment.h" />
     <ClInclude Include="StateDeterm.h" />
     <ClInclude Include="StateNotDeterm.h" />
+    <ClInclude Include="Minimizate.h" />
   </ItemGroup>
 </Project>
