@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
 	system("pause");
 	
 
-	
+	/*
 	CStateMelee nodeQ1("S0");
 	nodeQ1.SetPath("0", "S1", "y1");
 	nodeQ1.SetPath("1", "S0", "y1");
@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
 				std::cout << jf.first << "->" << jf.second << std::endl;
 			}
 		}
-	}
+	}*/
 	//
 //	std::cout << "Transfer " << std::endl;
 //	CTransferMelleToMoora melToMor(dataStates);
