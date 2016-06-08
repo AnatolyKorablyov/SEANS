@@ -3,6 +3,7 @@
 #include "MooraStatesment.h"
 #include "TransferMelleToMoora.h"
 #include "TransferMoorToMellee.h"
+#include "DeterminateAutomates.h"
 
 int main()
 {
@@ -105,7 +106,49 @@ int main()
 		std::cout << '\n' << std::endl;
 	}
 
+	CStateNotDeterm notDetermQ1("S0");
+	notDetermQ1.SetPath("1", "S0");
+	notDetermQ1.SetPath("0", "S1");
 
+	CNotDeterStatesment notDeterData;
+	notDeterData.addState(notDetermQ1);
+
+	CStateNotDeterm notDetermQ2("S1");
+	notDetermQ2.SetPath("1", "S0");
+	notDetermQ2.SetPath("0", "S2");
+	notDeterData.addState(notDetermQ2);
+
+	CStateNotDeterm notDetermQ3("S2");
+	notDetermQ3.SetPath("0", "S2");
+	notDetermQ3.SetPath("0", "S0");
+	notDeterData.addState(notDetermQ3);
+
+	std::cout << std::endl << "NOT DETERMINATE: " << std::endl;
+	for (auto &it : notDeterData.m_stateData)
+	{
+		std::cout << "name " << it.second->m_name << std::endl;
+		for (auto &jf : it.second->to)
+		{
+			std::cout << jf.first << "->" ;
+			for (auto &as : jf.second)
+			{
+				std::cout << as << " ";
+			}
+			std::cout << std::endl;
+		}
+	}
+	
+	std::cout << std::endl << "Determinate: " << std::endl;
+	CDeterminateAutomates determinate(notDeterData);
+
+	for (auto &it : determinate.m_deterAuto.m_stateData)
+	{
+		std::cout << "name " << it.second->m_name << std::endl;
+		for (auto &jf : it.second->to)
+		{
+			std::cout << jf.first << "->" << jf.second << std::endl;
+		}
+	}
 	/*
 	CState nodeq1("q1");
 	nodeq1.SetPath("q1", "x1");
