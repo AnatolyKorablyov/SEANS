@@ -8,6 +8,5 @@ class CTransferMelleeToNoDeterm
 public:
 	CTransferMelleeToNoDeterm(CMelleeStatesment &notDeterData);
 	CNotDeterStatesment m_deterData;
-private:
 	std::vector<CStateNotDeterm> vectorNodes;
 };

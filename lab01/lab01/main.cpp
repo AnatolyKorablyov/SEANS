@@ -9,27 +9,21 @@
 #include "DeterminateAutomates.h"
 
 int main(int argc, char* argv[])
-{/*
-	CStateNotDeterm notDetermQ1("S0");
-	notDetermQ1.SetPath("1", "S0");
-	notDetermQ1.SetPath("0", "S1");
+{
+	/*CStateNotDeterm notDetermQ1("S1");
+	notDetermQ1.SetPath("x1", "S1");
+	notDetermQ1.SetPath("x2", "S2");
 
 	CNotDeterStatesment notDeterData;
 	notDeterData.addState(notDetermQ1);
 
-	CStateNotDeterm notDetermQ2("S1");
-	notDetermQ2.SetPath("1", "S0");
-	notDetermQ2.SetPath("0", "S2");
+	CStateNotDeterm notDetermQ2("S2");
+	notDetermQ2.SetPath("x1", "S3");
 	notDeterData.addState(notDetermQ2);
 
-	CStateNotDeterm notDetermQ3("S2");
-	notDetermQ3.SetPath("0", "S2");
-	notDetermQ3.SetPath("0", "S0");
-	notDeterData.addState(notDetermQ3);
-
-	CStateNotDeterm notDetermQ5("S5");
-	notDeterData.addState(notDetermQ5);*/
-	/*
+	CStateNotDeterm notDetermQ5("S3");
+	notDeterData.addState(notDetermQ5);
+	
 	std::cout << std::endl << "NOT DETERMINATE: " << std::endl;
 	for (auto &it : notDeterData.m_stateData)
 	{
@@ -50,16 +44,13 @@ int main(int argc, char* argv[])
 
 	for (auto &it : determinate.m_deterAuto.m_stateData)
 	{
-		if (it.second->to.size() != 0)
-		{
 			std::cout << "name " << it.second->m_name << std::endl;
 			for (auto &jf : it.second->to)
 			{
 				std::cout << jf.first << "->" << jf.second << std::endl;
 			}
-		}
-	}*/
-
+	}
+*/
 	//<название ррограммы> <путь до файл команд> <путь до файла ввода> <путь до файла вывода>
 	std::string commandFileName;
 	std::string inputFileName;

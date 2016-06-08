@@ -47,5 +47,5 @@ private:
 	CMelleeStatesment m_meale;
 	std::map < std::string, CMelleeStatesment> m_melleeMachines;
 	std::map < std::string, CMooraStatesment> m_mooraMachines;
-
+	std::map < std::string, CDeterStatesment> m_determMachines;
 };

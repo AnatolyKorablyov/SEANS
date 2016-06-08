@@ -1,6 +1,6 @@
 #include "StateNotDeterm.h"
 
-CStateNotDeterm::CStateNotDeterm(std::string name)
+CStateNotDeterm::CStateNotDeterm(const std::string & name)
 	: m_name(name)
 {
 }

@@ -134,8 +134,9 @@ void CParser::MinimizeMur(const std::string & arg)
 void CParser::Determine(const std::string & arg)
 {
 	CTransferMelleeToNoDeterm transferMelleeToNotDeterm(m_melleeMachines.at(arg));
-	CNotDeterStatesment m_notDeterm = transferMelleeToNotDeterm.m_deterData;
-	CDeterminateAutomates machine(m_notDeterm);
+	CNotDeterStatesment notDeterData = transferMelleeToNotDeterm.m_deterData;
+	CDeterminateAutomates machine(notDeterData);
+	m_determMachines[arg] = machine.m_deterAuto;
 }
 
 void CParser::IsEquel(const std::string & arg1, const std::string & arg2)
@@ -245,6 +246,46 @@ void CParser::Save()
 			}
 			json j = {
 				{ "id", moora.first },
+				{ "type", "Determ moore" },
+				{ "states", jstates },
+				{ "transitions", jtransitions }
+			};
+			jResultMachines.push_back(j);
+		}
+	}
+	//determ automate
+	if (!m_determMachines.empty())
+	{
+		json jdeterm;
+		for (auto determ : m_determMachines)
+		{
+			//states block
+			json jstates;
+			for (auto it : determ.second.m_stateData)
+			{
+				jstates.push_back({ it.first });
+			}
+
+			//transitions block
+			json jtransitions;
+			for (auto it : determ.second.m_stateData)
+			{
+				json jtransition;
+				std::string from = it.second->m_name;//
+				for (auto itTo : it.second->to)
+				{
+					auto to = itTo.first;
+					auto input = itTo.second;
+					jtransition = {
+						{ "input", input },
+						{ "from", from },
+						{ "to", to }
+					};
+					jtransitions.push_back(jtransition);
+				}
+			}
+			json j = {
+				{ "id", determ.first },
 				{ "type", "moore" },
 				{ "states", jstates },
 				{ "transitions", jtransitions }
@@ -252,6 +293,7 @@ void CParser::Save()
 			jResultMachines.push_back(j);
 		}
 	}
+
 
 	json j = {
 		{"state machine",jResultMachines}

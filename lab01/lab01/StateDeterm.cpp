@@ -1,7 +1,7 @@
 #include "StateDeterm.h"
 
 
-CStateDeterm::CStateDeterm(std::string name)
+CStateDeterm::CStateDeterm(const std::string & name)
 	: m_name(name)
 {
 }

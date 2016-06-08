@@ -1,9 +1,6 @@
 {
 	"commands": [{
-		"type": "translate-mil-to-mur",
-		"arguments": ["StateMachineX"]
-	}, {
-		"type": "translate-mur-to-mil",
+		"type": "determine",
 		"arguments": ["StateMachineX"]
 	}]
 

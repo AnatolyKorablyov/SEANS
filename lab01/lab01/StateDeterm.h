@@ -5,7 +5,7 @@
 class CStateDeterm
 {
 public:
-	CStateDeterm(std::string name);
+	CStateDeterm(const std::string & name);
 	void SetPath(std::string nameTo, std::string inpState); // std::map<куда, входной символ>
 
 	std::string m_name = "";

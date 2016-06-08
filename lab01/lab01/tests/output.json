@@ -3,31 +3,60 @@
         {
             "id": "StateMachineX",
             "states": [
-                "b0",
-                "b1",
-                "b2"
+                "q1",
+                "q2",
+                "q3"
             ],
             "transitions": [
                 {
-                    "from": "b0",
+                    "from": "q1",
                     "input": "x1",
                     "output": "y1",
-                    "to": "b0"
+                    "to": "q1"
                 },
                 {
-                    "from": "b0",
+                    "from": "q1",
                     "input": "x2",
                     "output": "y1",
-                    "to": "b1"
+                    "to": "q2"
                 },
                 {
-                    "from": "b1",
+                    "from": "q2",
                     "input": "x1",
                     "output": "y2",
-                    "to": "b2"
+                    "to": "q3"
                 }
             ],
             "type": "meale"
+        },
+        {
+            "id": "StateMachineX",
+            "states": [
+                [
+                    "q1"
+                ],
+                [
+                    "q2"
+                ]
+            ],
+            "transitions": [
+                {
+                    "from": "q1",
+                    "input": "x1",
+                    "to": "q1"
+                },
+                {
+                    "from": "q1",
+                    "input": "x2",
+                    "to": "q2"
+                },
+                {
+                    "from": "q2",
+                    "input": "x1",
+                    "to": "q3"
+                }
+            ],
+            "type": "moore"
         }
     ]
 }
