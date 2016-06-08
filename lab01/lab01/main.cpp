@@ -7,7 +7,7 @@
 #include "TransferMoorToMellee.h"
 
 int main(int argc, char* argv[])
-{
+{/*
 	CStateNotDeterm notDetermQ1("S0");
 	notDetermQ1.SetPath("1", "S0");
 	notDetermQ1.SetPath("0", "S1");
@@ -26,8 +26,8 @@ int main(int argc, char* argv[])
 	notDeterData.addState(notDetermQ3);
 
 	CStateNotDeterm notDetermQ5("S5");
-	notDeterData.addState(notDetermQ5);
-	
+	notDeterData.addState(notDetermQ5);*/
+	/*
 	std::cout << std::endl << "NOT DETERMINATE: " << std::endl;
 	for (auto &it : notDeterData.m_stateData)
 	{
@@ -56,10 +56,10 @@ int main(int argc, char* argv[])
 				std::cout << jf.first << "->" << jf.second << std::endl;
 			}
 		}
-	}
+	}*/
 
 	//<название ррограммы> <путь до файл команд> <путь до файла ввода> <путь до файла вывода>
-	/*std::string commandFileName;
+	std::string commandFileName;
 	std::string inputFileName;
 	std::string outputFileName;
 	std::cout << "<path to command file> <path to input file> <path to output file>" << std::endl;
@@ -72,10 +72,10 @@ int main(int argc, char* argv[])
 	else
 	{
 		std::cin >> commandFileName >> inputFileName >> outputFileName;
-	}*/
-	/*CParser(commandFileName, inputFileName, outputFileName);
+	}
+	CParser(commandFileName, inputFileName, outputFileName);
 	system("pause");
-	*/
+	
 
 	
 	/*CStateMelee nodeQ1("q0");
