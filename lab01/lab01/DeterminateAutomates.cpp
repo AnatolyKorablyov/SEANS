@@ -15,12 +15,13 @@ CDeterminateAutomates::CDeterminateAutomates(CNotDeterStatesment & notDeterData)
 		localSet.emplace(fromSet, localMap);
 	}
 	while (Recursion())
-	{
-		std::cout << "do";
-	}
+	{}
 	for (auto &ut : determVector)
 	{
-		m_deterAuto.addState(ut);
+		if (ut.to.size() != 0)
+		{
+			m_deterAuto.addState(ut);
+		}
 	}
 }
 

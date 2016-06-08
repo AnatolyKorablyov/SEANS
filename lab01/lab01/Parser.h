@@ -11,6 +11,10 @@
 
 #include "TransferMoorToMellee.h"
 #include "TransferMelleToMoora.h"
+#include "Minimizate.h"
+#include "DeterminateAutomates.h"
+#include "Equivalence—hecking.h"
+#include "TransferMelleeToNoDeterm.h"
 
 
 using json = nlohmann::json;
@@ -26,6 +30,13 @@ private:
 	void ParseCommand(const std::string & fileName);
 	void TranslateMilToMur(const std::string & args);
 	void TranslateMurToMil(const std::string & args);
+	void MinimizeMil(const std::string & args);
+	void MinimizeMur(const std::string & args);
+	void Determine(const std::string & args);
+	void IsEquel(const std::string & arg1, const std::string & arg2);
+	void IsEquelToMur(const std::string & arg1, const std::string & arg2);
+	void IsEquelToMele(const std::string & arg1, const std::string & arg2);
+
 
 	void Save();
 

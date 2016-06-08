@@ -131,6 +131,7 @@
     <ClCompile Include="StateMelee.cpp" />
     <ClCompile Include="StateMoora.cpp" />
     <ClCompile Include="StateNotDeterm.cpp" />
+    <ClCompile Include="TransferMelleeToNoDeterm.cpp" />
     <ClCompile Include="TransferMelleToMoora.cpp" />
     <ClCompile Include="TransferMoorToMellee.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="StateMoora.h" />
     <ClInclude Include="StateNotDeterm.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TransferMelleeToNoDeterm.h" />
     <ClInclude Include="TransferMelleToMoora.h" />
     <ClInclude Include="TransferMoorToMellee.h" />
   </ItemGroup>

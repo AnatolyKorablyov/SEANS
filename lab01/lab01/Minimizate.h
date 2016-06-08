@@ -12,7 +12,7 @@ struct MyStruct
 class CMinimizate
 {
 public:
-	CMinimizate(std::map<std::string, CStateMelee*> &originalMachine);
+	CMinimizate(std::map<std::string, std::shared_ptr<CStateMelee>> &originalMachine);
 	~CMinimizate();
 	std::map<std::string, std::shared_ptr<CStateMelee>> GetMinimizateMachine();
 	std::vector<bool> m_check;
@@ -20,7 +20,7 @@ private:
 	void SearchEquivalence(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);
 	std::vector<MyStruct> m_parts;
 	std::vector<MyStruct> m_partsCopy;
-	std::map<std::string, CStateMelee*> m_originalMachine;
+	std::map<std::string, std::shared_ptr<CStateMelee>> m_originalMachine;
 	std::vector<std::vector<std::pair<std::string, std::string>>> m_word;
 	bool m_wasFalse = false;
 	void SearchEquivalence1(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);

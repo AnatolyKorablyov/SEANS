@@ -8,8 +8,58 @@
 
 int main(int argc, char* argv[])
 {
+	CStateNotDeterm notDetermQ1("S0");
+	notDetermQ1.SetPath("1", "S0");
+	notDetermQ1.SetPath("0", "S1");
+
+	CNotDeterStatesment notDeterData;
+	notDeterData.addState(notDetermQ1);
+
+	CStateNotDeterm notDetermQ2("S1");
+	notDetermQ2.SetPath("1", "S0");
+	notDetermQ2.SetPath("0", "S2");
+	notDeterData.addState(notDetermQ2);
+
+	CStateNotDeterm notDetermQ3("S2");
+	notDetermQ3.SetPath("0", "S2");
+	notDetermQ3.SetPath("0", "S0");
+	notDeterData.addState(notDetermQ3);
+
+	CStateNotDeterm notDetermQ5("S5");
+	notDeterData.addState(notDetermQ5);
+	
+	std::cout << std::endl << "NOT DETERMINATE: " << std::endl;
+	for (auto &it : notDeterData.m_stateData)
+	{
+		std::cout << "name " << it.second->m_name << std::endl;
+		for (auto &jf : it.second->to)
+		{
+			std::cout << jf.first << "->";
+			for (auto &as : jf.second)
+			{
+				std::cout << as << " ";
+			}
+			std::cout << std::endl;
+		}
+	}
+
+	std::cout << std::endl << "Determinate: " << std::endl;
+	CDeterminateAutomates determinate(notDeterData);
+
+	for (auto &it : determinate.m_deterAuto.m_stateData)
+	{
+		if (it.second->to.size() != 0)
+		{
+			std::cout << "name " << it.second->m_name << std::endl;
+			for (auto &jf : it.second->to)
+			{
+				std::cout << jf.first << "->" << jf.second << std::endl;
+			}
+		}
+	}
+
 	//<название ррограммы> <путь до файл команд> <путь до файла ввода> <путь до файла вывода>
-	std::string commandFileName;
+	/*std::string commandFileName;
 	std::string inputFileName;
 	std::string outputFileName;
 	std::cout << "<path to command file> <path to input file> <path to output file>" << std::endl;
@@ -22,23 +72,25 @@ int main(int argc, char* argv[])
 	else
 	{
 		std::cin >> commandFileName >> inputFileName >> outputFileName;
-	}
-	CParser(commandFileName, inputFileName, outputFileName);
+	}*/
+	/*CParser(commandFileName, inputFileName, outputFileName);
 	system("pause");
-//	
-//	CStateMelee nodeQ1("q0");
-//	nodeQ1.SetPath("x1", "q2", "y1");
-//	nodeQ1.SetPath("x2", "q0", "y1");
-//
-//	CMelleeStatesment dataStates;
-//	dataStates.addState(nodeQ1);
-//
-//	CStateMelee nodeQ2("q1");
-//	nodeQ2.SetPath("x1", "q0", "y1");
-//	nodeQ2.SetPath("x2", "q2", "y2");
-//	dataStates.addState(nodeQ2);
-//
-//
+	*/
+
+	
+	/*CStateMelee nodeQ1("q0");
+	nodeQ1.SetPath("x1", "q2", "y1");
+	nodeQ1.SetPath("x2", "q0", "y1");
+
+	CMelleeStatesment dataStates;
+	dataStates.addState(nodeQ1);
+
+	CStateMelee nodeQ2("q1");
+	nodeQ2.SetPath("x1", "q0", "y1");
+	nodeQ2.SetPath("x2", "q2", "y2");
+	dataStates.addState(nodeQ2);
+
+*/
 //	CStateMelee nodeQ3("q2");
 //	nodeQ3.SetPath("x1", "q0", "y2");
 //	nodeQ3.SetPath("x2", "q1", "y1");

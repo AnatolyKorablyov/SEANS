@@ -1,7 +1,7 @@
 #include "Minimizate.h"
 
 
-CMinimizate::CMinimizate(std::map<std::string, CStateMelee*> &originalMachine)
+CMinimizate::CMinimizate(std::map<std::string, std::shared_ptr<CStateMelee>> &originalMachine)
 	: m_originalMachine(originalMachine)
 {
 	m_check.resize(m_originalMachine.size());

@@ -16,6 +16,7 @@
     <ClCompile Include="StateDeterm.cpp" />
     <ClCompile Include="StateNotDeterm.cpp" />
     <ClCompile Include="Minimizate.cpp" />
+    <ClCompile Include="TransferMelleeToNoDeterm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="json.hpp" />
@@ -34,5 +35,6 @@
     <ClInclude Include="StateDeterm.h" />
     <ClInclude Include="StateNotDeterm.h" />
     <ClInclude Include="Minimizate.h" />
+    <ClInclude Include="TransferMelleeToNoDeterm.h" />
   </ItemGroup>
 </Project>

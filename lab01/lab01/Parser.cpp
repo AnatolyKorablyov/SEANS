@@ -4,7 +4,11 @@ CParser::CParser(const std::string & commandFileName, const std::string & inputF
 	m_outputFile(outputFileName),
 	m_commands({
 		{ "translate-mil-to-mur", std::bind(&CParser::TranslateMilToMur, this, std::placeholders::_1) },
-		{ "translate-mur-to-mil", std::bind(&CParser::TranslateMurToMil, this, std::placeholders::_1) }
+		{ "translate-mur-to-mil", std::bind(&CParser::TranslateMurToMil, this, std::placeholders::_1) },
+		{ "minimize-mur", std::bind(&CParser::MinimizeMil, this, std::placeholders::_1)},
+		{ "minimize-mil", std::bind(&CParser::MinimizeMur, this, std::placeholders::_1) },
+		{ "determine", std::bind(&CParser::Determine, this, std::placeholders::_1)}
+		//{ "is-equal-to", std::bind(&CParser::MinimizeMur, this, std::placeholders::_1, std::placeholders::_2) },
 	})
 {
 	ParseData(inputFileName);
@@ -107,6 +111,55 @@ void CParser::TranslateMurToMil(const std::string & arg)
 	CTransferMoorToMellee machine(m_mooraMachines.at(arg));
 	m_mooraMachines.erase(arg);
 	m_melleeMachines[arg] = machine.m_resultMellee;
+}
+
+void CParser::MinimizeMil(const std::string & arg)
+{
+	CMinimizate machine(m_melleeMachines.at(arg).m_stateData);
+	CMelleeStatesment buffer;
+	buffer.m_stateData = machine.GetMinimizateMachine();
+	m_melleeMachines[arg] = buffer;
+}
+
+void CParser::MinimizeMur(const std::string & arg)
+{
+	TranslateMurToMil(arg);
+	CMinimizate machine(m_melleeMachines.at(arg).m_stateData);
+	CMelleeStatesment buffer;
+	buffer.m_stateData = machine.GetMinimizateMachine();
+	m_melleeMachines[arg] = buffer;
+	TranslateMilToMur(arg);
+}
+
+void CParser::Determine(const std::string & arg)
+{
+	CTransferMelleeToNoDeterm transferMelleeToNotDeterm(m_melleeMachines.at(arg));
+	CNotDeterStatesment m_notDeterm = transferMelleeToNotDeterm.m_deterData;
+	CDeterminateAutomates machine(m_notDeterm);
+}
+
+void CParser::IsEquel(const std::string & arg1, const std::string & arg2)
+{
+	if (m_melleeMachines.find(arg1)!=m_melleeMachines.end())
+	{
+		IsEquelToMele(arg1, arg2);
+	}
+	else
+	{
+		IsEquelToMur(arg1, arg2);
+	}
+}
+
+void CParser::IsEquelToMur(const std::string & arg1, const std::string & arg2)
+{
+	CEquivalence—hecking machine;
+	machine.equivalenceMoora(m_mooraMachines.at(arg1), m_mooraMachines.at(arg2));
+}
+
+void CParser::IsEquelToMele(const std::string & arg1, const std::string & arg2)
+{
+	CEquivalence—hecking machine;
+	machine.equivalenceMellee(m_melleeMachines.at(arg1), m_melleeMachines.at(arg2));
 }
 
 void CParser::Save()
