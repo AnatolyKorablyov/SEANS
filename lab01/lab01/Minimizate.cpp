@@ -110,9 +110,9 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 		}
 		state = "";
 	}
-	/////
+	/////////////////////////////////////////////
 	FillTheCell();
-	//////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////
 	for (auto &classes : m_parts)
 	{
 		for (auto &states : classes.word)
@@ -128,38 +128,87 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 			state = "";
 		}
 	}
-	///////////////////////////////////////////////////////////////////
-	std::swap(m_parts, m_partsCopy);
-	FillTheCell();
-	////
-	//m_parts.clear();
-	/*
-	m_wasFalse = false;
-	state = "";
-	m_check.clear();
-	m_check.resize(m_originalMachine.size());
-	for (auto &classes : m_parts)
+	//////////////////////////////////
+	while(m_parts.size() != m_partsCopy.size())
 	{
-		for (auto &states : classes.word)
+		FillTheCell();
+		m_partsCopy.clear();
+		for (auto &classes : m_parts)
 		{
-			for (auto &ite : states.second)
+			for (auto &states : classes.word)
 			{
-				state += ite.second;
+				for (auto &ite : states.second)
+				{
+					state += ite.second;
+				}
+				if (!m_wasFalse)
+				{
+					SearchEquivalence1(state, states.first, states.second);
+				}
+				state = "";
 			}
-			if (!m_wasFalse)
-			{
-				SearchEquivalence1(state, states.first, states.second);
-			}
-			state = "";
 		}
-	}*/
+	}
+//	///
+//	FillTheCell();
+//	m_partsCopy.clear();
+//	for (auto &classes : m_parts)
+//	{
+//		for (auto &states : classes.word)
+//		{
+//			for (auto &ite : states.second)
+//			{
+//				state += ite.second;
+//			}
+//			if (!m_wasFalse)
+//			{
+//				SearchEquivalence1(state, states.first, states.second);
+//			}
+//			state = "";
+//		}
+//	}
+//	FillTheCell();
+//////////////////////////////////
+//	FillTheCell();
+//	m_partsCopy.clear();
+//	for (auto &classes : m_parts)
+//	{
+//		for (auto &states : classes.word)
+//		{
+//			for (auto &ite : states.second)
+//			{
+//				state += ite.second;
+//			}
+//			if (!m_wasFalse)
+//			{
+//				SearchEquivalence1(state, states.first, states.second);
+//			}
+//			state = "";
+//		}
+//	}
+//	FillTheCell();
+//
+	//////////////////////////////////
 	return minimizateMachine;
+}
+
+void CMinimizate::GoToInitialPachine()
+{
+
 }
 
 void CMinimizate::FillTheCell()
 {
-	std::string state = "";
+	std::string state;
 	int i = 1;
+	m_wasFalse = false;
+	state = "";
+	m_check.clear();
+	m_check.resize(m_originalMachine.size());
+	if (m_partsCopy.size() > m_parts.size()) 
+	{
+		std::swap(m_parts, m_partsCopy);
+	}
 	for (auto &iter : m_parts)
 	{
 		for (auto &iterWord : iter.word)
@@ -173,11 +222,6 @@ void CMinimizate::FillTheCell()
 		}
 		++i;
 	}
-
-	m_wasFalse = false;
-	state = "";
-	m_check.clear();
-	m_check.resize(m_originalMachine.size());
 }
 
 void CMinimizate::SeachEqual(std::string qOriginal,int count, std::string q)
