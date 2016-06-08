@@ -5,6 +5,8 @@
 
 #include "TransferMelleToMoora.h"
 #include "TransferMoorToMellee.h"
+#include "TransferMelleeToNoDeterm.h"
+#include "DeterminateAutomates.h"
 
 int main(int argc, char* argv[])
 {/*
@@ -78,36 +80,49 @@ int main(int argc, char* argv[])
 	
 
 	
-	/*CStateMelee nodeQ1("q0");
-	nodeQ1.SetPath("x1", "q2", "y1");
-	nodeQ1.SetPath("x2", "q0", "y1");
+	CStateMelee nodeQ1("S0");
+	nodeQ1.SetPath("0", "S1", "y1");
+	nodeQ1.SetPath("1", "S0", "y1");
 
 	CMelleeStatesment dataStates;
 	dataStates.addState(nodeQ1);
 
-	CStateMelee nodeQ2("q1");
-	nodeQ2.SetPath("x1", "q0", "y1");
-	nodeQ2.SetPath("x2", "q2", "y2");
+	CStateMelee nodeQ2("S1");
+	nodeQ2.SetPath("0", "S2", "y1");
+	nodeQ2.SetPath("1", "S0", "y2");
 	dataStates.addState(nodeQ2);
 
-*/
-//	CStateMelee nodeQ3("q2");
-//	nodeQ3.SetPath("x1", "q0", "y2");
-//	nodeQ3.SetPath("x2", "q1", "y1");
-//	dataStates.addState(nodeQ3);
-//
-//	std::cout << "MELLEEE :" << std::endl;
-//	for (auto &it : dataStates.m_stateData)
-//	{
-//		auto state = it.second;
-//		std::cout << "name " << state->m_name << std::endl;
-//		for (auto &kj : state->to)
-//		{
-//			std::cout << '\t' << kj.first << "->" << kj.second.first << "/" << kj.second.second << std::endl;
-//		}
-//		std::cout << '\n' << std::endl;
-//	}
-//
+	CStateMelee nodeQ3("S2");
+	nodeQ3.SetPath("0", "S2", "y2");
+	nodeQ3.SetPath("0", "S0", "y1");
+	dataStates.addState(nodeQ3);
+	std::cout << "MELLEEE :" << std::endl;
+	for (auto &it : dataStates.m_stateData)
+	{
+		auto state = it.second;
+		std::cout << "name " << state->m_name << std::endl;
+		for (auto &kj : state->to)
+		{
+			std::cout << '\t' << kj.first << "->" << kj.second.first << "/" << kj.second.second << std::endl;
+		}
+		std::cout << '\n' << std::endl;
+	}
+
+	CTransferMelleeToNoDeterm as(dataStates);
+	CDeterminateAutomates deter(as.m_deterData);
+	std::cout << std::endl << "Determinate: " << std::endl;
+	for (auto &it : deter.m_deterAuto.m_stateData)
+	{
+		if (it.second->to.size() != 0)
+		{
+			std::cout << "name " << it.second->m_name << std::endl;
+			for (auto &jf : it.second->to)
+			{
+				std::cout << jf.first << "->" << jf.second << std::endl;
+			}
+		}
+	}
+	//
 //	std::cout << "Transfer " << std::endl;
 //	CTransferMelleToMoora melToMor(dataStates);
 //
