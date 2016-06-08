@@ -44,7 +44,10 @@ void CMinimizate::SearchEquivalence(std::string state, std::string name, std::ve
 	{
 		m_wasFalse = true;
 	}
-	m_parts.push_back(classes);
+	if (!classes.word.empty())
+	{
+		m_parts.push_back(classes);		
+	}
 }
 
 
@@ -53,19 +56,22 @@ void CMinimizate::SearchEquivalence1(std::string state, std::string name, std::v
 	unsigned i = 0;
 	std::string stateOther;
 	MyStruct classes;
-	for (auto &it : m_originalMachine)
+	for (auto &it : m_parts)
 	{
-		for (auto &it : it.second->to)
+		for (auto &q : it.word) 
 		{
-			stateOther += it.second.second;
+			for (auto &states : q.second)
+			{
+				stateOther += states.second;
+			}
+			if (state == stateOther && m_check[i] != true)
+			{
+				classes.word.emplace(q.first, q.second);
+				m_check[i] = true;
+			}
+			stateOther = "";
+			++i;
 		}
-		if (state == stateOther && m_check[i] != true)
-		{
-			classes.word.emplace(it.first, second);
-			m_check[i] = true;
-		}
-		stateOther = "";
-		++i;
 	}
 	bool wasFalse = false;
 	for (auto checker : m_check)
@@ -79,7 +85,10 @@ void CMinimizate::SearchEquivalence1(std::string state, std::string name, std::v
 	{
 		m_wasFalse = true;
 	}
-	m_parts.push_back(classes);
+	if(!classes.word.empty())
+	{
+		m_partsCopy.push_back(classes);
+	}
 }
 
 
@@ -101,6 +110,55 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 		}
 		state = "";
 	}
+	/////
+	FillTheCell();
+	//////////////////////////////////////////////////////////////////////
+	for (auto &classes : m_parts)
+	{
+		for (auto &states : classes.word)
+		{
+			for (auto &ite : states.second)
+			{
+				state += ite.second;
+			}
+			if (!m_wasFalse)
+			{
+				SearchEquivalence1(state, states.first, states.second);
+			}
+			state = "";
+		}
+	}
+	///////////////////////////////////////////////////////////////////
+	std::swap(m_parts, m_partsCopy);
+	FillTheCell();
+	////
+	//m_parts.clear();
+	/*
+	m_wasFalse = false;
+	state = "";
+	m_check.clear();
+	m_check.resize(m_originalMachine.size());
+	for (auto &classes : m_parts)
+	{
+		for (auto &states : classes.word)
+		{
+			for (auto &ite : states.second)
+			{
+				state += ite.second;
+			}
+			if (!m_wasFalse)
+			{
+				SearchEquivalence1(state, states.first, states.second);
+			}
+			state = "";
+		}
+	}*/
+	return minimizateMachine;
+}
+
+void CMinimizate::FillTheCell()
+{
+	std::string state = "";
 	int i = 1;
 	for (auto &iter : m_parts)
 	{
@@ -120,18 +178,6 @@ std::map<std::string, CStateMelee*> CMinimizate::GetMinimizateMachine()
 	state = "";
 	m_check.clear();
 	m_check.resize(m_originalMachine.size());
-	for (auto &classes : m_parts)
-	{
-		for (auto &states : classes.word)
-		{
-			for (auto &ite : states.second)
-			{
-				state += ite.second;
-			}
-			SearchEquivalence1(state, states.first, states.second);
-		}
-	}
-	return minimizateMachine;
 }
 
 void CMinimizate::SeachEqual(std::string qOriginal,int count, std::string q)

@@ -26,6 +26,8 @@ private:
 	bool m_wasFalse = false;
 	void SearchEquivalence1(std::string state, std::string name, std::vector<std::pair<std::string, std::string>> second);
 	void SeachEqual(std::string qOriginal, int count, std::string q);
+	void CMinimizate::SeachEqual1(std::string qOriginal, int count, std::string q);
+	void FillTheCell();
 };
 
 
