@@ -97,7 +97,7 @@ void CParser::ParseCommand(const std::string & fileName)
 void CParser::TranslateMilToMur(const std::string & arg)
 {
 	CTransferMelleToMoora machine(m_melleeMachines.at(arg));
-	//m_melleeMachines.erase(remove(m_melleeMachines.begin(), m_melleeMachines.end(), m_melleeMachines.at(arg)), m_melleeMachines.end());
+	m_melleeMachines.erase(arg);
 	m_mooraMachines[arg] = machine.m_resultMoora;
 
 }
@@ -105,7 +105,7 @@ void CParser::TranslateMilToMur(const std::string & arg)
 void CParser::TranslateMurToMil(const std::string & arg)
 {
 	CTransferMoorToMellee machine(m_mooraMachines.at(arg));
-	//m_mooraMachines.erase(remove(m_mooraMachines.begin(), m_mooraMachines.end(), m_mooraMachines.at(arg)), m_mooraMachines.end());
+	m_mooraMachines.erase(arg);
 	m_melleeMachines[arg] = machine.m_resultMellee;
 }
 
@@ -187,9 +187,6 @@ void CParser::Save()
 						{ "from", from },
 						{ "to", to }
 					};
-				}
-				if (!jtransition.empty())
-				{
 					jtransitions.push_back(jtransition);
 				}
 			}
