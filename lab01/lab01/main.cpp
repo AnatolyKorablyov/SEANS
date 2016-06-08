@@ -4,6 +4,7 @@
 #include "TransferMelleToMoora.h"
 #include "TransferMoorToMellee.h"
 #include "DeterminateAutomates.h"
+#include "Equivalence—hecking.h"
 
 int main()
 {
@@ -149,31 +150,95 @@ int main()
 			std::cout << jf.first << "->" << jf.second << std::endl;
 		}
 	}
-	/*
-	CState nodeq1("q1");
-	nodeq1.SetPath("q1", "x1");
-	*/
-	/*CStateData dataStates;
-	dataStates.addState(nodeq1);
-/*
-	*//*
-	nodeq1.SetPath("q2", "x2");
-	dataStates.addState(nodeq1);*/
 
-/*
-	CState nodeq2("q2");
-	nodeq2.SetPath("q3", "x1");
-	dataStates.addState(nodeq2);
-	*/
-	/*for (auto &it : dataStates.stateData)
+
+	std::cout << std::endl << "EQUIVALENCE: " << std::endl;
+	CEquivalence—hecking checkEqual;
+	if (checkEqual.equivalenceMoora(melToMor.m_resultMoora, dataStatesMor))
 	{
-		auto state = it.second;
-		std::cout << "name " << state->m_name << std::endl;
-		for (auto &kj : state->to)
-		{
-			std::cout << '\t' << kj.first << "->" << kj.second << " " << std::endl;
-		}
-		std::cout << '\n' << std::endl;
-	}*/
+		std::cout << "equivalence Moora" << std::endl;
+	}
+	else
+	{
+		std::cout << "not equivalence" << std::endl;
+	}
+
+	CStateMoora nodeMorq1("q1", "y1");
+	nodeMorq1.SetPath("x1", "q2");
+	nodeMorq1.SetPath("x2", "q3");
+	CMooraStatesment dataStatesMorSecond;
+	dataStatesMorSecond.addState(nodeMorq1);
+
+
+	CStateMoora nodeMorq2("q2", "y1");
+	nodeMorq2.SetPath("x1", "q2");
+	nodeMorq2.SetPath("x2", "q4");
+	dataStatesMorSecond.addState(nodeMorq2);
+
+
+	CStateMoora nodeMorq3("q3", "y2");
+	nodeMorq3.SetPath("x1", "q1");
+	nodeMorq3.SetPath("x2", "q2");
+	dataStatesMorSecond.addState(nodeMorq3);
+
+	CStateMoora nodeMorq4("q4", "y1");
+	nodeMorq4.SetPath("x1", "q2");
+	nodeMorq4.SetPath("x2", "q5");
+	dataStatesMorSecond.addState(nodeMorq4);
+
+	CStateMoora nodeMorq5("q5", "y2");
+	nodeMorq5.SetPath("x1", "q4");
+	nodeMorq5.SetPath("x2", "q2");
+	dataStatesMorSecond.addState(nodeMorq5);
+
+	if (checkEqual.equivalenceMoora(dataStatesMorSecond, dataStatesMor))
+	{
+		std::cout << "equivalence Moora" << std::endl;
+	}
+	else
+	{
+		std::cout << "not equivalence" << std::endl;
+	}
+
+	if (checkEqual.equivalenceMellee(dataStates, MorToMel.m_resultMellee))
+	{
+		std::cout << "equivalence Mellee" << std::endl;
+	}
+	else
+	{
+		std::cout << "not equivalence" << std::endl;
+	}
+
+	CStateMelee nodeQ1Mel("q0");
+	nodeQ1Mel.SetPath("x1", "q2", "y1");
+	nodeQ1Mel.SetPath("x2", "q0", "y1");
+
+	CMelleeStatesment dataStatesMel;
+	dataStatesMel.addState(nodeQ1Mel);
+
+	CStateMelee nodeQ2Mel("q1");
+	nodeQ2Mel.SetPath("x1", "q0", "y1");
+	nodeQ2Mel.SetPath("x2", "q2", "y2");
+	dataStatesMel.addState(nodeQ2Mel);
+
+
+	CStateMelee nodeQ3Mel("q2");
+	nodeQ3Mel.SetPath("x1", "q0", "y2");
+	nodeQ3Mel.SetPath("x2", "q1", "y1");
+	dataStatesMel.addState(nodeQ3Mel);
+
+
+	if (checkEqual.equivalenceMellee(dataStatesMel, dataStates))
+	{
+		std::cout << "equivalence Mellee" << std::endl;
+	}
+	else
+	{
+		std::cout << "not equivalence" << std::endl;
+	}
+
+
+
+
 	return 0;
 }

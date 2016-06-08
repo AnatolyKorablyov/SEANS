@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="DeterminateAutomates.cpp" />
     <ClCompile Include="DeterStatesment.cpp" />
+    <ClCompile Include="EquivalenceСhecking.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MelleeStatesment.cpp" />
     <ClCompile Include="MooraStatesment.cpp" />
@@ -126,6 +127,7 @@
   <ItemGroup>
     <ClInclude Include="DeterminateAutomates.h" />
     <ClInclude Include="DeterStatesment.h" />
+    <ClInclude Include="EquivalenceСhecking.h" />
     <ClInclude Include="MelleeStatesment.h" />
     <ClInclude Include="MooraStatesment.h" />
     <ClInclude Include="NotDeterStatesment.h" />
