@@ -1,85 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\State">
-      <UniqueIdentifier>{ffb7eee6-0e94-427b-82ce-e073cf70fa96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\State">
-      <UniqueIdentifier>{f4d05fa1-8d15-4350-89c6-1620129d621f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\parser">
-      <UniqueIdentifier>{dbab1a45-e449-494b-abf0-016433ebc871}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MelleeStatesment.cpp" />
+    <ClCompile Include="MooraStatesment.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="StateMelee.cpp" />
+    <ClCompile Include="StateMoora.cpp" />
+    <ClCompile Include="TransferMelleToMoora.cpp" />
+    <ClCompile Include="TransferMoorToMellee.cpp" />
+    <ClCompile Include="DeterminateAutomates.cpp" />
+    <ClCompile Include="DeterStatesment.cpp" />
+    <ClCompile Include="EquivalenceСhecking.cpp" />
+    <ClCompile Include="NotDeterStatesment.cpp" />
+    <ClCompile Include="StateDeterm.cpp" />
+    <ClCompile Include="StateNotDeterm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MelleeStatesment.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="MooraStatesment.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="StateMelee.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="StateMoora.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Parser.cpp">
-      <Filter>Source Files\parser</Filter>
-=======
-    <ClCompile Include="TransferMelleToMoora.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TransferMoorToMellee.cpp">
-      <Filter>Source Files</Filter>
->>>>>>> 412cb28ee96a5d588289fd0ff427d1a0881a4860
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MelleeStatesment.h">
-      <Filter>Header Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="StateMoora.h">
-      <Filter>Header Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="MooraStatesment.h">
-      <Filter>Header Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="StateMelee.h">
-      <Filter>Header Files\State</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="json.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Parser.h">
-      <Filter>Source Files\parser</Filter>
-=======
-    <ClInclude Include="TransferMelleToMoora.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TransferMoorToMellee.h">
-      <Filter>Header Files</Filter>
->>>>>>> 412cb28ee96a5d588289fd0ff427d1a0881a4860
-    </ClInclude>
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="MelleeStatesment.h" />
+    <ClInclude Include="MooraStatesment.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="StateMelee.h" />
+    <ClInclude Include="StateMoora.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TransferMelleToMoora.h" />
+    <ClInclude Include="TransferMoorToMellee.h" />
+    <ClInclude Include="DeterminateAutomates.h" />
+    <ClInclude Include="DeterStatesment.h" />
+    <ClInclude Include="EquivalenceСhecking.h" />
+    <ClInclude Include="NotDeterStatesment.h" />
+    <ClInclude Include="StateDeterm.h" />
+    <ClInclude Include="StateNotDeterm.h" />
   </ItemGroup>
 </Project>
